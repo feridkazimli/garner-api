@@ -13,4 +13,4 @@ module.exports = new typeorm.EntitySchema({
             type: "varchar",
         },
     },
-})
+});

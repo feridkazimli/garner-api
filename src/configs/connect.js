@@ -1,5 +1,4 @@
 const typeorm = require('typeorm');
-
 const dataSource = new typeorm.DataSource({
     type: "mysql",
     host: "localhost",
