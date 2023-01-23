@@ -1,8 +1,8 @@
 const ErrorHandler = require("./ErrorHandler");
 const Handler = (callback)=>{
-    return async (req,res,next)=>{
+    return async (req,res)=>{
         try {
-            await callback(req,res,next).catch((err)=>{
+            await callback(req,res).catch((err)=>{
                 throw err;
             })
         } catch (err) {
