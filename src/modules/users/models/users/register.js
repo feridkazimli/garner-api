@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
-const dataSource = require('../../../configs/connect')
-const User = require('../../../entities/Users')
+const dataSource = require('../../../../configs/connect')
+const User = require('../../../../entities/Users')
 
 const userRepository = dataSource.getRepository(User)
 
