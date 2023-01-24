@@ -1,3 +1,11 @@
-// const express = require('express');
-// const app = express()
-// router yaradilacaq
+const express = require('express');
+
+const router = express.Router();
+
+
+router.get('/',(req,res,next) => {
+    res.send('hello from users')
+})
+
+
+module.exports = router
