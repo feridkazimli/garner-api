@@ -2,7 +2,7 @@ class CustomError extends Error{
     constructor(message,code){
         super();
         this.code = code;
-        this.message = message;
+        this.messages = message;
     }
 }
 module.exports = CustomError;
