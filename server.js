@@ -1,11 +1,7 @@
-const express = require("express");
-const dataSource = require("./src/configs/connect");
-const app = express();
-const path = require('path')
+const express = require('express');
+const dataSource = require('./src/configs/connect');
 const fs = require('fs');
-require('dotenv').config()
-
-app.use(express.json())
+const app = express()
 
 dataSource
     .initialize()
