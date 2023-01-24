@@ -1,6 +1,6 @@
 const express = require("express");
 const dataSource = require("./src/configs/connect");
-const userRouter = require('./src/routes/user')
+const userRouter = require('./src/modules/users/index')
 const app = express();
 require('dotenv').config()
 app.use(express.json())
