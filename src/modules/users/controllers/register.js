@@ -2,6 +2,7 @@ const lodash = require('lodash')
 const CustomError = require('../../../utils/CustomError')
 const responseSuccess = require('../../../utils/ResponseSuccess')
 const User = require('../models')
+const Handler = require('../../../utils/Handler')
 
 const postUser = Handler(async (req, res, next) => {
     const isRegistered = await User.findByEmail(req.body)
