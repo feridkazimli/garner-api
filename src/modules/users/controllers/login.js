@@ -5,9 +5,7 @@ const Handler = require('../../../utils/Handler')
 const ResponseSuccess = require('../../../utils/ResponseSuccess')
 const bcrypt = require('bcrypt')
 const CustomError = require('../../../utils/CustomError')
-const {
-    v4: uuidv4
-} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken')
 const {
     createRefreshToken,
@@ -17,28 +15,21 @@ const {
 
 const signInHandler = Handler(async (req, res, next) => {
     const user = await findByEmail(req.body);
-    console.log(user, 'user email')
+
+    if (!user) throw new CustomError('Invalid email or password', 400)
+
+    const tokenId = uuidv4()
 
     const validPassword = await bcrypt.compare(req.body.password, user.password)
-    console.log(validPassword, 'valid password')
 
-    if (!user.email) {
-        throw new CustomError('Invalid email or password', 400)
-    }
+    if (!validPassword) throw new CustomError('Invalid email or password', 400)
 
-    const {
-        id,
-        email
-    } = user
-
+    const { id, email } = user
+    console.log(id)
     const accessToken = jwt.sign({
         id,
         email
-    }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '4m'
-    })
-
-    let tokenId = uuidv4()
+    }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '4m' })
 
     const refreshToken = jwt.sign({
         userId: id,
@@ -48,24 +39,18 @@ const signInHandler = Handler(async (req, res, next) => {
     })
 
     const validToken = await findTokenById(id);
-    if (validToken) return await deleteRefreshToken(validToken)
+
+    if (validToken) {
+        await deleteRefreshToken(validToken)
+    }
 
     await createRefreshToken({
         id: tokenId,
-        userId: id
+        userId: user.id
     })
 
-    // res.cookie('refreshToken', refreshToken, {
-    //     httpOnly: true
-    // })
-    // res.cookie('accessToken', accessToken, {
-    //     httpOnly: true
-    // })
-
-
-    ResponseSuccess(res, { refreshToken }, 'Successfully logged')
+    ResponseSuccess(res, { accessToken, refreshToken }, 'Successfully logged')
 })
-
 
 module.exports = {
     signInHandler
