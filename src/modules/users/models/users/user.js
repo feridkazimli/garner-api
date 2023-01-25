@@ -19,7 +19,7 @@ module.exports.deleteRefreshToken = async (param) => {
 
 
 module.exports.findUserById = async ({ id }) => {
-    return await userRepository.findOneBy({ id })
+    return await userRepository.findOneByOrFail({ id })
 }
 
 

@@ -63,7 +63,7 @@ const signInHandler = Handler(async (req, res, next) => {
     // })
 
 
-    ResponseSuccess(res, { refreshToken }, 'Successfully logged')
+    ResponseSuccess(res, { refreshToken }, 'Successfully logged');
 })
 
 
