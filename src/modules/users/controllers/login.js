@@ -49,19 +49,7 @@ const signInHandler = Handler(async (req, res, next) => {
         userId: user.id
     })
 
-<<<<<<< HEAD
-    // res.cookie('refreshToken', refreshToken, {
-    //     httpOnly: true
-    // })
-    // res.cookie('accessToken', accessToken, {
-    //     httpOnly: true
-    // })
-
-
-    ResponseSuccess(res, { refreshToken }, 'Successfully logged');
-=======
     ResponseSuccess(res, { accessToken, refreshToken }, 'Successfully logged')
->>>>>>> b15d65719e3fed56d777a68702030371c4c78e45
 })
 
 module.exports = {
