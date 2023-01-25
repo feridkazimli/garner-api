@@ -1,11 +1,8 @@
-const {Router} = require('express');
-const Handler = require('../../utils/Handler');
-const forgetPassword = require('../users/controllers/forgetPassword');
-const route = Router();
+const express = require('express')
+const router = express.Router()
+const { postUser } = require('./controllers/register')
 
-route.get('/forgetpassword',forgetPassword);
-// route.get('/login',middleware)
-// route.get('/login',middleware)
+router.post('/signup', postUser)
 
 
-module.exports = route
+module.exports = router
