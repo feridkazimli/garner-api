@@ -2,6 +2,8 @@ const express = require('express');
 const dataSource = require('./src/configs/connect');
 const fs = require('fs');
 const app = express()
+const dotenv = require('dotenv');
+dotenv.config();
 
 dataSource
     .initialize()
