@@ -1,7 +1,7 @@
 const typeorm = require('typeorm');
 
 module.exports = new typeorm.EntitySchema({
-    name: "garner-api",
+    name: "Users",
     tableName: "users",
     columns: {
         id: {
