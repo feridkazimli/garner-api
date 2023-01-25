@@ -4,6 +4,7 @@ const fs = require('fs');
 const app = express()
 const dotenv = require('dotenv');
 dotenv.config();
+app.use(express.json())
 
 dataSource
     .initialize()
