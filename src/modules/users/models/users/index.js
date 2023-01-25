@@ -1,8 +1,12 @@
 const { createUser, findByEmail } = require('./register')
-// const {  model function of login} = require('./users/login') 
-// const {  model function of forgotPass} = require('./users/forgotPass') 
+ const {createRefreshToken, deleteRefreshToken, findById,findTokenById} = require('../../models/users/user')
 
 module.exports = {
     createUser,
-    findByEmail
+    findByEmail,
+    createRefreshToken,
+    deleteRefreshToken,
+    findTokenById,
+    findById,
+    
 }

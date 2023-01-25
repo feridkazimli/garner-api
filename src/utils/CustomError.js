@@ -1,6 +1,6 @@
 class CustomError extends Error{
     constructor(message,code){
-        super();
+        super(mess);
         this.code = code;
         this.messages = message;
     }
