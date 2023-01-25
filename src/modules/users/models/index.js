@@ -1,4 +1,4 @@
-const { createUser, findByEmail } = require('./users/register')
+const { createUser, findByEmail } = require('./register')
 // const {  model function of login} = require('./users/login') 
 // const {  model function of forgotPass} = require('./users/forgotPass') 
 

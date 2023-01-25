@@ -9,6 +9,7 @@ const dataSource = new typeorm.DataSource({
     synchronize: true,
     entities: [
         require("../entities/Users"), 
+        require("../entities/Refresh")
         
     ],
 });

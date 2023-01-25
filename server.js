@@ -2,7 +2,8 @@ const express = require('express');
 const dataSource = require('./src/configs/connect');
 const fs = require('fs');
 const app = express()
-
+const dotenv = require('dotenv');
+dotenv.config();
 dataSource
     .initialize()
     .then(() => console.log("Happy"))
@@ -11,7 +12,7 @@ dataSource
 
 const routeHandlers = function (directory, app) {
     fs.readdirSync(directory).forEach(function (folderName) {
-        app.use(`/${folderName}`, require(directory + '/' + folderName))
+    //   app.use(`/${folderName}`, require(directory + '/' + folderName))
     })
 }
 
