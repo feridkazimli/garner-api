@@ -19,7 +19,6 @@ module.exports.findByEmail = async ({ email }) => {
     return await userRepository.findOneBy({ email })
 }
 
-// module.exports.findById = async ({ id }) => {
-//     return await userRepository.findOneBy({ id })
-// }
+
+
 
