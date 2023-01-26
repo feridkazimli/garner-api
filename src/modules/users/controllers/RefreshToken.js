@@ -59,8 +59,6 @@ const refreshToken = Handler(async (req, res, next) => {
       expiresIn: "10m",
     }
   );
-
- // res.json({ accessToken, refreshToken });
  ResponseSuccess(res,{accessToken,refreshToken},"Succsess send tokens")
 });
 
