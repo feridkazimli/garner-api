@@ -8,7 +8,6 @@ const refreshTokenRepository = dataSource.getRepository(refreshToken)
 
 module.exports.createRefreshToken = async (param) => {
     const newToken = refreshTokenRepository.create(param)
-    console.log(newToken);
     return await refreshTokenRepository.save(newToken);
 }
 

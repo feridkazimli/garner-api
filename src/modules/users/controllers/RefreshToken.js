@@ -12,28 +12,27 @@ const {
   createRefreshToken,
 } = require("../models/users/");
 const refreshToken = Handler(async (req, res, next) => {
-  const {refreshToken: refreshTokencheck} = req.body;
-  if (!refreshTokencheck) throw new CustomError("not refreshToken");
+  const refreshTokencheck = req.body.refreshToken;
+  if (!refreshTokencheck) throw new CustomError("refreshToken don't come");
   const decode = jwt.verify(
     refreshTokencheck,
     process.env.REFRESH_TOKEN_SECRET,
-    async (err, decode) => {
+     (err, decode) => {
       if (err) {
         throw new CustomError(err.message);
       }
 
       return decode;
+
     }
   );
-
   const { id, userId } = decode;
-  const reftokenishave = await findTokenById(id);
-  if (!reftokenishave) {
-    throw new CustomError("not refreshToken");
+  const isreftokendetail = await findTokenById(userId);
+  if (!isreftokendetail) {
+    throw new CustomError("not refreshToken in database");
   }
-  await deleteRefreshToken(reftokenishave);
+  await deleteRefreshToken(isreftokendetail);
   const uuid = uuidv4();
-
   await createRefreshToken({
     id: uuid,
     userId: userId,
@@ -61,7 +60,8 @@ const refreshToken = Handler(async (req, res, next) => {
     }
   );
 
-  res.json({ accessToken, refreshToken });
+ // res.json({ accessToken, refreshToken });
+ ResponseSuccess(res,{accessToken,refreshToken},"Succsess send tokens")
 });
 
 module.exports = {
