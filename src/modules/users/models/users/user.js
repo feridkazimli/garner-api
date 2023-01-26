@@ -8,7 +8,6 @@ const refreshTokenRepository = dataSource.getRepository(refreshToken)
 
 module.exports.createRefreshToken = async (param) => {
     const newToken = refreshTokenRepository.create(param)
-    console.log(newToken);
     return await refreshTokenRepository.save(newToken);
 }
 
@@ -17,7 +16,7 @@ module.exports.deleteRefreshToken = async ({ userId, id }) => {
 }
 
 module.exports.findUserById = async ({ id }) => {
-    return await userRepository.findOneBy({ id })
+    return await userRepository.findOneByOrFail({ id })
 }
 
 module.exports.findTokenById = async (userId) => {

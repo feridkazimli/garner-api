@@ -1,5 +1,5 @@
 const { createUser, findByEmail } = require('./register')
- const {createRefreshToken, deleteRefreshToken, findById,findTokenById} = require('../../models/users/user')
+ const {createRefreshToken, deleteRefreshToken, findUserById,findTokenById} = require('../../models/users/user')
 
 module.exports = {
     createUser,
@@ -7,6 +7,5 @@ module.exports = {
     createRefreshToken,
     deleteRefreshToken,
     findTokenById,
-    findById,
-    
+    findUserById, 
 }
